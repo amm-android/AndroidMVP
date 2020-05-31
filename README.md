@@ -7,8 +7,9 @@ MVP框架，基类封装，集成工具类。
 ### 使用
 
 ```gradle
-compile 'com.rairmmd:andmvp:1.0.2'
+implementation 'com.github.amm-android:AndroidMVP:v1.0.2'
 ```
+原址：https://github.com/Rairmmd/AndMvp
 
 #### BaseApplication
 必须自定义一个application继承自BaseApplication，并在manifest配置自定义的application：

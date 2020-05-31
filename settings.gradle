@@ -1,1 +1,2 @@
-include ':andmvp'
+include ':library'
+include ':module_app'
