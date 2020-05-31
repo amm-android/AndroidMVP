@@ -7,7 +7,7 @@ MVP框架，基类封装，集成工具类。
 ### 使用
 
 ```gradle
-implementation 'com.github.amm-android:AndroidMVP:v1.0.2'
+implementation 'com.github.amm-android:AndroidMVP:v1.0.2t'
 ```
 原址：https://github.com/Rairmmd/AndMvp
 
