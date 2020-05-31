@@ -14,10 +14,174 @@ import java.util.Locale;
 
 public class DateUtils {
 
+    /**
+     * 格式化时间
+     *
+     * @param time 时间
+     * @return 2018.12
+     */
+    public static String format2YYYYMM(long time) {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM", Locale.CHINA);
+        return format.format(time);
+    }
+
+    /**
+     * 格式化时间
+     *
+     * @param time 时间
+     * @return 00:50
+     */
+    public static String format2HHmm(long time) {
+        SimpleDateFormat format = new SimpleDateFormat("HH:mm", Locale.CHINA);
+        return format.format(time);
+    }
+
+    /**
+     * 格式化时间
+     *
+     * @param time 时间
+     * @return 00:50:23
+     */
+    public static String format2HHmmss(long time) {
+        SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss", Locale.CHINA);
+        return format.format(time);
+    }
+
+    /**
+     * 格式化时间
+     *
+     * @param time 时间
+     * @return 2018.12
+     */
+    public static String format2YYYYMMDDHHMM(long time) {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.CHINA);
+        return format.format(time);
+    }
+
+    /**
+     * 格式化时间
+     *
+     * @param time 时间
+     * @return 2018.12
+     */
+    public static String format2YYYYMMDDHHMMSS(long time) {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA);
+        return format.format(time);
+    }
+
+    /**
+     * 格式化时间
+     *
+     * @param time 时间
+     * @return 13
+     */
+    public static String format2DD(long time) {
+        SimpleDateFormat format = new SimpleDateFormat("dd", Locale.CHINA);
+        return format.format(time);
+    }
+
+    /**
+     * 格式化时间
+     *
+     * @param time 时间
+     * @return 星期四
+     */
+    public static String format2EE(long time) {
+        SimpleDateFormat format = new SimpleDateFormat("EE", Locale.CHINA);
+        return format.format(time);
+    }
+
+    /**
+     * 格式化时间
+     *
+     * @param time 时间
+     * @return 2018-12-16 星期四
+     */
+    public static String format2YYYYYMMDDEE(long time) {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd EE", Locale.CHINA);
+        return format.format(time);
+    }
+
+    /**
+     * 格式化时间
+     *
+     * @param time 时间
+     * @return 2018-12-16 星期四
+     */
+    public static String format2YYYYYMMDDHHMMEE(long time) {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm EE", Locale.CHINA);
+        return format.format(time);
+    }
+
+    /**
+     * 格式化时间
+     *
+     * @param time 时间
+     * @return 2018.12
+     */
+    public static String format2EEMMDDYYYY(long time) {
+        SimpleDateFormat format = new SimpleDateFormat("EE/MM.dd/yyyy", Locale.CHINA);
+        return format.format(time);
+    }
+
     private static Calendar calendar(Date date) {
         Calendar calendar = Calendar.getInstance(Locale.CHINA);
         calendar.setTime(date);
         return calendar;
+    }
+
+    /**
+     * 获取年月日周
+     *
+     * @param date Date
+     */
+    public static int[] getYearMonthDayWeek(Date date) {
+        int[] ints = new int[4];
+        Calendar calendar = calendar(date);
+        ints[0] = calendar.get(Calendar.YEAR);
+        ints[1] = calendar.get(Calendar.MONTH) + 1;
+        ints[2] = calendar.get(Calendar.DAY_OF_MONTH);
+        ints[3] = getWeek(calendar);
+        return ints;
+    }
+
+    /**
+     * 获取年月日周
+     */
+    public static int[] getYearMonthDayWeek() {
+        int[] ints = new int[4];
+        Calendar calendar = Calendar.getInstance(Locale.CHINA);
+        ints[0] = calendar.get(Calendar.YEAR);
+        ints[1] = calendar.get(Calendar.MONTH) + 1;
+        ints[2] = calendar.get(Calendar.DAY_OF_MONTH);
+        ints[3] = getWeek(calendar);
+        return ints;
+    }
+
+    /**
+     * 获取年月日
+     *
+     * @param date Date
+     */
+    public static int[] getYearMonthDay(Date date) {
+        int[] ints = new int[3];
+        Calendar calendar = calendar(date);
+        ints[0] = calendar.get(Calendar.YEAR);
+        ints[1] = calendar.get(Calendar.MONTH) + 1;
+        ints[2] = calendar.get(Calendar.DAY_OF_MONTH);
+        return ints;
+    }
+
+    /**
+     * 获取年月日
+     */
+    public static int[] getYearMonthDay() {
+        int[] ints = new int[3];
+        Calendar calendar = Calendar.getInstance(Locale.CHINA);
+        ints[0] = calendar.get(Calendar.YEAR);
+        ints[1] = calendar.get(Calendar.MONTH) + 1;
+        ints[2] = calendar.get(Calendar.DAY_OF_MONTH);
+        return ints;
     }
 
     /**
@@ -206,8 +370,63 @@ public class DateUtils {
         return calendar.getTimeInMillis();
     }
 
-    public static String format2YMDHM(long time) {
-        SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd  HH:mm", Locale.CHINA);
-        return format.format(time);
+    /**
+     * 获取当前日期是星期几<br>
+     *
+     * @return 当前日期是星期几
+     */
+    public static int getWeek(Calendar calendar) {
+        int[] weekDays = {7, 1, 2, 3, 4, 5, 6};
+        int w = calendar.get(Calendar.DAY_OF_WEEK) - 1;
+        if (w < 0) {
+            w = 0;
+        }
+        return weekDays[w];
     }
+
+
+    /**
+     * 获取当前日期是星期几<br>
+     *
+     * @return 当前日期是星期几
+     */
+    public static int getWeek() {
+        int[] weekDays = {7, 1, 2, 3, 4, 5, 6};
+        Calendar calendar = Calendar.getInstance(Locale.CHINA);
+        int w = calendar.get(Calendar.DAY_OF_WEEK) - 1;
+        if (w < 0) {
+            w = 0;
+        }
+        return weekDays[w];
+    }
+
+    /**
+     * 获取当前日期是星期几<br>
+     *
+     * @return 当前日期是星期几
+     */
+    public static String getWeekString() {
+        String[] weekDays = {"周日", "周一", "周二", "周三", "周四", "周五", "周六"};
+        Calendar cal = Calendar.getInstance();
+        int w = cal.get(Calendar.DAY_OF_WEEK) - 1;
+        if (w < 0) {
+            w = 0;
+        }
+        return weekDays[w];
+    }
+
+    /**
+     * 获取当前日期是星期几<br>
+     *
+     * @return 当前日期是星期几
+     */
+    public static String getWeekString(Calendar calendar) {
+        String[] weekDays = {"周日", "周一", "周二", "周三", "周四", "周五", "周六"};
+        int w = calendar.get(Calendar.DAY_OF_WEEK) - 1;
+        if (w < 0) {
+            w = 0;
+        }
+        return weekDays[w];
+    }
+
 }

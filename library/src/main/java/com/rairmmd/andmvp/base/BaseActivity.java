@@ -3,17 +3,12 @@ package com.rairmmd.andmvp.base;
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.view.ViewCompat;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Toast;
 
 import com.android.tu.loadingdialog.LoadingDailog;
-import com.gyf.barlibrary.ImmersionBar;
+import com.gyf.immersionbar.ImmersionBar;
 import com.r0adkll.slidr.Slidr;
 import com.r0adkll.slidr.model.SlidrConfig;
 import com.r0adkll.slidr.model.SlidrInterface;
@@ -24,6 +19,11 @@ import com.rairmmd.andmvp.utils.DensityUtils;
 import com.rairmmd.andmvp.utils.EventBusUtils;
 import com.rairmmd.andmvp.utils.VersionUtils;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
+import androidx.core.view.ViewCompat;
+import androidx.fragment.app.FragmentManager;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import es.dmoral.toasty.Toasty;
@@ -38,7 +38,7 @@ import me.yokeyword.fragmentation.SupportActivity;
 public abstract class BaseActivity<P extends IPresent> extends SupportActivity implements IView<P> {
 
     private P p;
-    protected Activity context;
+    protected Activity mContext;
     protected ImmersionBar mImmersionBar;
     private Unbinder unbinder;
     private LoadingDailog loadingDailog;
@@ -48,7 +48,7 @@ public abstract class BaseActivity<P extends IPresent> extends SupportActivity i
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        context = this;
+        mContext = this;
         if (getLayoutId() > 0) {
             setContentView(getLayoutId());
             bindUI(null);
@@ -92,9 +92,6 @@ public abstract class BaseActivity<P extends IPresent> extends SupportActivity i
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (mImmersionBar != null) {
-            mImmersionBar.destroy();
-        }
         if (getClass().isAnnotationPresent(BindEventBus.class)) {
             EventBusUtils.unregister(this);
         }
@@ -147,7 +144,7 @@ public abstract class BaseActivity<P extends IPresent> extends SupportActivity i
             toolbar.setNavigationOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    ActivityCompat.finishAfterTransition(context);
+                    ActivityCompat.finishAfterTransition(mContext);
                 }
             });
         }
@@ -171,7 +168,7 @@ public abstract class BaseActivity<P extends IPresent> extends SupportActivity i
             toolbar.setNavigationOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    ActivityCompat.finishAfterTransition(context);
+                    ActivityCompat.finishAfterTransition(mContext);
                 }
             });
         }
@@ -199,7 +196,7 @@ public abstract class BaseActivity<P extends IPresent> extends SupportActivity i
             toolbar.setNavigationOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    ActivityCompat.finishAfterTransition(context);
+                    ActivityCompat.finishAfterTransition(mContext);
                 }
             });
         }
@@ -208,15 +205,23 @@ public abstract class BaseActivity<P extends IPresent> extends SupportActivity i
         }
     }
 
-    protected void translucentStatus() {
-        mImmersionBar.fitsSystemWindows(true).statusBarDarkFont(true).init();
-    }
-
     protected void translucentStatus(Toolbar toolbar) {
         if (VersionUtils.isLollipop()) {
             toolbar.setElevation(DensityUtils.dip2px(4f));
         }
         mImmersionBar.titleBar(toolbar).init();
+    }
+
+    protected void translucentStatusBar(boolean isDarkFont) {
+        mImmersionBar.statusBarDarkFont(isDarkFont).init();
+    }
+
+    protected void translucentStatusBar(Toolbar toolbar, boolean isDarkFont) {
+        mImmersionBar.titleBar(toolbar).statusBarDarkFont(isDarkFont).init();
+    }
+
+    protected void translucentStatusBar(boolean isFitSystemWindow, boolean isDarkFont) {
+        mImmersionBar.fitsSystemWindows(isFitSystemWindow).statusBarDarkFont(isDarkFont).init();
     }
 
     /**

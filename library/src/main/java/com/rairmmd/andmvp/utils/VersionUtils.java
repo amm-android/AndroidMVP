@@ -112,4 +112,12 @@ public class VersionUtils {
     public static boolean isN(){
         return  Build.VERSION.SDK_INT >=  Build.VERSION_CODES.N;
     }
+
+    /**
+     * 是否在8.0版本及以上
+     * @return 是否在8.0版本及以上
+     */
+    public static boolean isO(){
+        return  Build.VERSION.SDK_INT >=  Build.VERSION_CODES.O;
+    }
 }

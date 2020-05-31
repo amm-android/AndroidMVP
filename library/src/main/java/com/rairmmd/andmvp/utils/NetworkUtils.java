@@ -15,7 +15,7 @@ import android.os.Build;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 
-import com.socks.library.KLog;
+import com.rairmmd.andmvp.log.KLog;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;

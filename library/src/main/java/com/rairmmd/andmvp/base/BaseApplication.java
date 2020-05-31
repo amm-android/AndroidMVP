@@ -5,8 +5,6 @@ import android.app.ActivityManager;
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
-import android.support.annotation.ColorRes;
-
 import com.rairmmd.andmvp.cockroach.Cockroach;
 import com.rairmmd.andmvp.cockroach.ExceptionHandler;
 import com.rairmmd.andmvp.loader.ImageLoader;
@@ -15,6 +13,7 @@ import com.socks.library.KLog;
 
 import java.util.Stack;
 
+import androidx.annotation.ColorRes;
 import es.dmoral.toasty.Toasty;
 
 /**

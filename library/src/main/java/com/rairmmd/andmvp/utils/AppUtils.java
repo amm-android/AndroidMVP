@@ -10,11 +10,12 @@ import android.os.Build;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.provider.Settings;
-import android.support.annotation.ColorRes;
-import android.support.annotation.NonNull;
-import android.support.annotation.StringRes;
-import android.support.v4.content.ContextCompat;
 import android.view.View;
+
+import androidx.annotation.ColorRes;
+import androidx.annotation.NonNull;
+import androidx.annotation.StringRes;
+import androidx.core.content.ContextCompat;
 
 import java.io.File;
 import java.io.PrintWriter;
@@ -120,6 +121,24 @@ public class AppUtils {
     }
 
     /**
+     * 获取厂商
+     *
+     * @return BRAND
+     */
+    public static String getBrand() {
+        return Build.BRAND;
+    }
+
+    /**
+     * 获取手机型号
+     *
+     * @return MODEL
+     */
+    public static String getModel() {
+        return Build.MODEL;
+    }
+
+    /**
      * 获取App包 信息版本号
      *
      * @return PackageInfo
@@ -140,7 +159,7 @@ public class AppUtils {
      *
      * @return PackageName
      */
-    public static String getAppPackageName() {
+    public static String getPackageName() {
         return context.getPackageName();
     }
 
@@ -151,6 +170,15 @@ public class AppUtils {
      */
     public static String getAppVersion() {
         return getPackageInfo().versionName;
+    }
+
+    /**
+     * 获取安卓版本
+     *
+     * @return 安卓版本
+     */
+    public static String getAndroidVersion() {
+        return Build.VERSION.RELEASE;
     }
 
     /**

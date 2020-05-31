@@ -1,13 +1,14 @@
 package com.rairmmd.mvpdemo;
 
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.widget.FrameLayout;
 
 import com.rairmmd.andmvp.base.BaseActivity;
+import com.rairmmd.andmvp.utils.AppUtils;
 import com.rairmmd.mvpdemo.fragment.MainFragment;
 import com.rairmmd.mvpdemo.present.MainPresenter;
 
+import androidx.appcompat.widget.Toolbar;
 import butterknife.BindView;
 
 public class MainActivity extends BaseActivity<MainPresenter> {
@@ -19,7 +20,7 @@ public class MainActivity extends BaseActivity<MainPresenter> {
 
     @Override
     public void initView(Bundle savedInstanceState) {
-        setToolbar(toolbar, getString(R.string.app_name), false);
+        setToolbar(toolbar, AppUtils.getString(R.string.app_name), false);
     }
 
     @Override

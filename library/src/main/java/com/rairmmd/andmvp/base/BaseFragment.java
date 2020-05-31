@@ -3,25 +3,25 @@ package com.rairmmd.andmvp.base;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentManager;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.android.tu.loadingdialog.LoadingDailog;
-import com.gyf.barlibrary.ImmersionBar;
+import com.gyf.immersionbar.ImmersionBar;
 import com.rairmmd.andmvp.anno.BindEventBus;
 import com.rairmmd.andmvp.utils.AppUtils;
 import com.rairmmd.andmvp.utils.DensityUtils;
 import com.rairmmd.andmvp.utils.EventBusUtils;
 import com.rairmmd.andmvp.utils.VersionUtils;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.FragmentManager;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import es.dmoral.toasty.Toasty;
@@ -36,7 +36,7 @@ import me.yokeyword.fragmentation.SupportFragment;
 public abstract class BaseFragment<P extends IPresent> extends SupportFragment implements IView<P> {
 
     private P p;
-    protected Activity context;
+    protected Activity mContext;
     private View rootView;
     protected LayoutInflater layoutInflater;
 
@@ -94,24 +94,24 @@ public abstract class BaseFragment<P extends IPresent> extends SupportFragment i
     }
 
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof Activity) {
-            this.context = (Activity) context;
+    public void onAttach(Context mContext) {
+        super.onAttach(mContext);
+        if (mContext instanceof Activity) {
+            this.mContext = (Activity) mContext;
         }
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-        context = null;
+        mContext = null;
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         if (mImmersionBar != null) {
-            mImmersionBar.destroy();
+            mImmersionBar.destroy(this);
         }
         if (getP() != null) {
             getP().detachV();
@@ -216,14 +216,14 @@ public abstract class BaseFragment<P extends IPresent> extends SupportFragment i
     @Nullable
     @Override
     public Activity getContext() {
-        return context;
+        return mContext;
     }
 
     /**
      * 加载dialog
      */
     public void showLoading() {
-        loadingDailog = new LoadingDailog.Builder(context).setCancelable(true)
+        loadingDailog = new LoadingDailog.Builder(mContext).setCancelable(true)
                 .setShowMessage(false).setCancelOutside(false).create();
         loadingDailog.show();
     }
@@ -232,7 +232,7 @@ public abstract class BaseFragment<P extends IPresent> extends SupportFragment i
      * 加载dialog
      */
     public void showLoading(String message) {
-        loadingDailog = new LoadingDailog.Builder(context).setCancelable(true)
+        loadingDailog = new LoadingDailog.Builder(mContext).setCancelable(true)
                 .setShowMessage(true).setMessage(message).setCancelOutside(false).create();
         loadingDailog.show();
     }

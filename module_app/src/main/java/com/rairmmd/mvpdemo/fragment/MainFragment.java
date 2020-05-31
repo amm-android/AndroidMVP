@@ -2,14 +2,11 @@ package com.rairmmd.mvpdemo.fragment;
 
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-
 import com.rairmmd.andmvp.base.BaseFragment;
 import com.rairmmd.mvpdemo.R;
 
-
 /**
- * A simple {@link Fragment} subclass.
+ * A simple Fragment subclass.
  */
 public class MainFragment extends BaseFragment {
 

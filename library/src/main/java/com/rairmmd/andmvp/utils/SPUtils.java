@@ -3,9 +3,10 @@ package com.rairmmd.andmvp.utils;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.support.annotation.NonNull;
-import android.support.v4.util.SimpleArrayMap;
 import android.util.Base64;
+
+import androidx.annotation.NonNull;
+import androidx.collection.SimpleArrayMap;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -37,6 +38,7 @@ public final class SPUtils {
         SPUtils.spName = spName;
         return getInstance();
     }
+
 
     /**
      * 获取SP实例

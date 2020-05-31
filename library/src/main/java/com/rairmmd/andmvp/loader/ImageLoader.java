@@ -1,7 +1,6 @@
 package com.rairmmd.andmvp.loader;
 
 import android.graphics.drawable.Drawable;
-import android.support.annotation.DrawableRes;
 import android.widget.ImageView;
 
 import com.rairmmd.andmvp.utils.AppUtils;
@@ -10,6 +9,8 @@ import com.yanzhenjie.album.Album;
 import com.yanzhenjie.album.AlbumConfig;
 
 import java.util.Locale;
+
+import androidx.annotation.DrawableRes;
 
 /**
  * @author Rair

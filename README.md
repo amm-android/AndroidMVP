@@ -7,7 +7,7 @@ MVP框架，基类封装，集成工具类。
 ### 使用
 
 ```gradle
-implementation 'com.github.amm-android:AndroidMVP:v1.0.2t'
+implementation 'com.github.amm-android:AndroidMVP:v1.0.3'
 ```
 原址：https://github.com/Rairmmd/AndMvp
 
@@ -191,40 +191,50 @@ load(@DrawableRes int resId, ImageView target)
 
 ### 使用到的开源库
 ```groovy
-    api 'com.android.support:appcompat-v7:28.0.0'
-    //Rx
-    api 'io.reactivex.rxjava2:rxjava:2.2.2'
-    api 'io.reactivex.rxjava2:rxandroid:2.1.0'
-    api 'com.squareup.retrofit2:retrofit:2.4.0'
-    api 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
-    api 'com.squareup.retrofit2:converter-gson:2.4.0'
-    api 'com.squareup.retrofit2:converter-scalars:2.4.0'
-    //权限
-    api 'com.yanzhenjie:permission:1.1.2'
-    //ButterKnife
-    api 'com.jakewharton:butterknife:8.8.1'
-    //LoadingDialog
-    api 'com.github.gittjy:LoadingDialog:1.0.2'
-    //Toasty
-    api 'com.github.GrenderG:Toasty:1.3.1'
-    //Klog
-    api 'com.github.zhaokaiqiang.klog:library:1.6.0'
-    //fragmentation
-    api 'me.yokeyword:fragmentation:1.3.6'
-    //状态栏
-    api 'com.gyf.barlibrary:barlibrary:2.3.0'
-    //鲁班图片压缩
-    api 'top.zibin:Luban:1.1.8'
-    //Picasso
-    api 'com.squareup.picasso:picasso:2.71828'
-    //图片选择
-    api 'com.yanzhenjie:album:2.1.3'
-    //适配器
-    api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.46'
-    //EventBus
-    api "org.greenrobot:eventbus:3.1.1"
-    //侧滑退出
-    api 'com.r0adkll:slidableactivity:2.0.6'
+    api 'androidx.appcompat:appcompat:1.1.0'
+        api 'androidx.recyclerview:recyclerview:1.0.0'
+        api 'androidx.constraintlayout:constraintlayout:1.1.3'
+        //Rx
+        api 'io.reactivex.rxjava2:rxjava:2.2.2'
+        api 'io.reactivex.rxjava2:rxandroid:2.1.0'
+        api 'com.squareup.retrofit2:retrofit:2.4.0'
+        api 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
+        api 'com.squareup.retrofit2:converter-gson:2.4.0'
+        api 'com.squareup.retrofit2:converter-scalars:2.4.0'
+        //权限
+        api 'com.yanzhenjie:permission:1.1.2'
+        //ButterKnife
+        api 'com.jakewharton:butterknife:10.2.0'
+        annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.0'
+        //LoadingDialog
+        api 'com.github.gittjy:LoadingDialog:1.0.2'
+        //Toasty
+        api 'com.github.GrenderG:Toasty:1.3.1'
+        //Klog
+        api 'com.github.zhaokaiqiang.klog:library:1.6.0'
+        //fragmentation
+        api 'me.yokeyword:fragmentationx:1.0.2'
+        //状态栏
+        api 'com.gyf.immersionbar:immersionbar:3.0.0'
+        //鲁班图片压缩
+        api 'top.zibin:Luban:1.1.8'
+        //Picasso
+        api 'com.squareup.picasso:picasso:2.71828'
+        //图片选择
+        api 'com.yanzhenjie:album:2.1.3'
+        //适配器
+        api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.46'
+        //EventBus
+        api "org.greenrobot:eventbus:3.1.1"
+        //侧滑退出
+        api 'com.r0adkll:slidableactivity:2.0.6'
+
+        api 'com.jpeng:JPTabBar:1.4.0'
+        api 'com.yanzhenjie.alertdialog:alertdialog:1.0.1'
+        api 'com.rxjava.rxlife:rxlife-x:1.1.0'
+        api 'com.github.lygttpod:RxHttpUtils:2.3.3'
+        api 'com.github.lygttpod:SuperTextView:2.4.2'
+        api 'com.lxj:xpopup:1.9.0'
 ```
 * AndPermission：动态权限申请
 * RxJava2:RxJava2
