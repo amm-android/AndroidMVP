@@ -215,6 +215,7 @@ public class XRouter {
                 }
             }
         } catch (Throwable throwable) {
+            throwable.printStackTrace();
             if (callback != null) {
                 callback.onError(from, to, throwable);
             }
