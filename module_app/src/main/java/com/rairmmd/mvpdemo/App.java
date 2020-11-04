@@ -13,7 +13,7 @@ public class App extends BaseApplication {
     @Override
     public void onCreate() {
         super.onCreate();
-        initLog(true, "rair");
+        initLog(true, "mvpdemo");
         initToast(R.color.colorAccent);
         initCrashHandler();
     }

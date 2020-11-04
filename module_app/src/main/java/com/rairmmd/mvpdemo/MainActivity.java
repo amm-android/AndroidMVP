@@ -26,6 +26,7 @@ public class MainActivity extends BaseActivity<MainPresenter> {
     @Override
     public void initData() {
         loadRootFragment(R.id.fl_container, MainFragment.newInstance());
+        getP().printHello();
     }
 
     @Override

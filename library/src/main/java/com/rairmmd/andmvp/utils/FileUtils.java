@@ -11,7 +11,7 @@ import android.os.StatFs;
 import android.text.format.Formatter;
 import android.util.Log;
 
-import com.rairmmd.andmvp.log.KLog;
+import com.socks.library.KLog;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
